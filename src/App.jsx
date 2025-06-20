@@ -1,9 +1,12 @@
-import { useRef, useState } from "react";
-import { BsCamera } from "react-icons/bs";
+import ContentImage from "./assets/components/ContentImage/content";
+import GenerateImage from "./assets/components/GenerateImage/generate";
+import HeadingText from "./assets/components/HeadingText/heading";
+
 export default function App() {
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className="bg-yellow-50 p-8 rounded-lg max-w-md w-full shadow-lg">
+        <HeadingText></HeadingText>
         <ContentImage></ContentImage>
         <GenerateImage></GenerateImage>
       </div>
@@ -11,71 +14,8 @@ export default function App() {
   );
 }
 
-function ContentImage() {
-  const [image, setImage] = useState(null);
-  const fileInputRef = useRef(null);
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
-  return (
-    <div className="relative w-60 h-60 mx-auto">
-      <Image
-        image={image}
-        fileInputRef={fileInputRef}
-        onImageUpload={handleImageUpload}
-      ></Image>
-      <button
-        onClick={handleButtonClick}
-        className="absolute bottom-1 right-5 bg-white p-3 rounded-full shadow-lg"
-      >
-        <BsCamera className="text-blue-500 w-7 h-7" />
-      </button>
-    </div>
-  );
-}
 
-function Image({ image, onImageUpload, fileInputRef }) {
-  return (
-    <div className="rounded-full overflow-hidden w-full h-full">
-      {image ? (
-        <img
-          src={image}
-          alt="Image Preview"
-          className="w-full h-auto object-cover shadow-md"
-        />
-      ) : (
-        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-          <span className="text-gray-400">No Image</span>
-        </div>
-      )}
-      <input
-        type="file"
-        accept="image/*"
-        className="hidden"
-        ref={fileInputRef}
-        onChange={onImageUpload}
-      />
-    </div>
-  );
-}
 
-function GenerateImage() {
-  return (
-    <div className="mt-6 flex justify-center">
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">
-        Generate Image
-      </button>
-    </div>
-  );
-}
+
+
