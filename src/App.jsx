@@ -1,3 +1,4 @@
+import ResultGenerate from "./assets/components/ContentGenerate/result";
 import ContentImage from "./assets/components/ContentImage/content";
 import GenerateImage from "./assets/components/GenerateImage/generate";
 import HeadingText from "./assets/components/HeadingText/heading";
@@ -9,6 +10,7 @@ export default function App() {
         <HeadingText></HeadingText>
         <ContentImage></ContentImage>
         <GenerateImage></GenerateImage>
+        <ResultGenerate></ResultGenerate>
       </div>
     </div>
   );
